@@ -14,6 +14,7 @@ include_directories(${CONDA_PREFIX}/include)
 # TODO: fix this
 find_package(Torch REQUIRED)
 find_package(CGAL REQUIRED)
+
 # find_package(pybind11 REQUIRED)
 
 include(FetchContent)
@@ -43,8 +44,10 @@ set(CUDA_GENERATED_OUTPUT_DIR "${BUILD_DIRECTORY}")
 # set environment
 #------------------------------------------------------------------------------
 
-# find_package(CUDA REQUIRED)
-# include_directories(${CUDA_INCLUDE_DIRS})
+include_directories("${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}")
+
+#find_package(CUDA REQUIRED)
+#include_directories(${CUDA_INCLUDE_DIRS})
 
 # configure_file("${CMAKE_SOURCE_DIR}/path_util.py.in" "${CMAKE_SOURCE_DIR}/../examples/path_util.py")
 

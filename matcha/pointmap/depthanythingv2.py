@@ -17,10 +17,10 @@ from depth_anything_v2.dpt import DepthAnythingV2
 from matcha.pointmap.base import PointMap
 from matcha.pointmap.utils import load_colmap_scene
 try:
-    from matcha.pointmap.dust3r import compute_dust3r_scene
+    from matcha.pointmap.dust3rcontroller import compute_dust3r_scene
 except:
     print("Dust3R not found.")
-from matcha.pointmap.mast3r import compute_mast3r_scene
+from matcha.pointmap.mast3rcontroller import compute_mast3r_scene
 from matcha.dm_scene.cameras import CamerasWrapper, P3DCameras
 from matcha.dm_utils.rendering import fov2focal
 

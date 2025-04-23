@@ -20,7 +20,7 @@ from matcha.dm_utils.rendering import(
     normal2curv_parallel,
 )
 from matcha.pointmap.depthanythingv2 import get_points_depth_in_depthmap
-from matcha.pointmap.mast3r import get_minimal_projections_diffs
+from matcha.pointmap.mast3rcontroller import get_minimal_projections_diffs
 from tqdm import tqdm
 
 

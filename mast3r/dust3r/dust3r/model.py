@@ -10,8 +10,8 @@ import os
 from packaging import version
 import huggingface_hub
 
-from .utils.misc import fill_default_args, freeze_all_params, is_symmetrized, interleave, transpose_to_landscape
-from .heads import head_factory
+from dust3r.utils.misc import fill_default_args, freeze_all_params, is_symmetrized, interleave, transpose_to_landscape
+from dust3r.heads import head_factory
 from dust3r.patch_embed import get_patch_embed
 
 import dust3r.utils.path_to_croco  # noqa: F401

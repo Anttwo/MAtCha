@@ -11,7 +11,7 @@ from matcha.dm_scene.parallel_aligner import (
 )
 from matcha.dm_scene.meshes import get_manifold_meshes_from_pointmaps
 from matcha.dm_scene.cameras import CamerasWrapper, create_gs_cameras_from_pointmap, rescale_cameras
-from matcha.pointmap.mast3r import load_mast3r_matches
+from matcha.pointmap.mast3rcontroller import load_mast3r_matches
 
 
 # TODO: Update the default values of the parameters

@@ -6,7 +6,7 @@
         "depends": [],
         "name": "hamming",
         "sources": [
-            "/home/aguedon/MAtCha/mast3r/asmk/cython/hamming.pyx"
+            "/home/jj15/MAtCha/mast3r/asmk/cython/hamming.pyx"
         ]
     },
     "module_name": "hamming"

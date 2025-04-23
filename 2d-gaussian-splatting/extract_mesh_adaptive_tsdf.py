@@ -27,8 +27,8 @@ def get_cameras_spatial_extent(views, device):
         _gs_cameras.append(
             GSCamera(
                 colmap_id=cam.colmap_id, 
-                R=torch.tensor(cam.R).float().to(device), 
-                T=torch.tensor(cam.T).float().to(device), 
+                R=cam.R.clone().detach().float().to(device), 
+                T=cam.T.clone().detach().float().to(device), # modified as per pytorch warning
                 FoVx=cam.FoVx, 
                 FoVy=cam.FoVy, 
                 image=None, 

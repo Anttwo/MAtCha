@@ -49,6 +49,9 @@ def _unbatched_marching_tetrahedra(vertices, tets, sdf, scales):
 
     Refer to :func:`marching_tetrahedra`.
     """
+    
+    # vertices.to('cpu') # gpu poor solution, fixme: do not push to git
+
     device = vertices.device
     
     # call by chunk
@@ -107,13 +110,18 @@ def _unbatched_marching_tetrahedra(vertices, tets, sdf, scales):
         order = (all_edges[:, 0] > all_edges[:, 1]).bool()
         all_edges[order] = all_edges[order][:, [1, 0]]
         
-        unique_edges, idx_map = torch.unique(all_edges, dim=0, return_inverse=True)
         
+        torch.cuda.empty_cache()
+
+        unique_edges, idx_map = torch.unique(all_edges, dim=0, return_inverse=True)
+
+
         unique_edges = unique_edges.long()
         mask_edges = occ_n[unique_edges.reshape(-1)].reshape(-1, 2).sum(-1) == 1
         mapping = torch.ones((unique_edges.shape[0]), dtype=torch.long, device=device) * -1
         mapping[mask_edges] = torch.arange(mask_edges.sum(), dtype=torch.long, device=device)
-        idx_map = mapping[idx_map]
+
+        idx_map = mapping[idx_map] # gpu poor mod
 
         interp_v = unique_edges[mask_edges]
     edges_to_interp = vertices[interp_v.reshape(-1)].reshape(-1, 2, 3)
@@ -123,7 +131,7 @@ def _unbatched_marching_tetrahedra(vertices, tets, sdf, scales):
     verts = (edges_to_interp, edges_to_interp_sdf)
     idx_map = idx_map.reshape(-1, 6)
 
-    tetindex = (occ_fx4[valid_tets] * v_id.to(device).unsqueeze(0)).sum(-1)
+    tetindex = (occ_fx4[valid_tets] * v_id.to(device).unsqueeze(0)).sum(-1) # gpu poor fix
     num_triangles = num_triangles_table.to(device)[tetindex]
     triangle_table_device = triangle_table.to(device)
 

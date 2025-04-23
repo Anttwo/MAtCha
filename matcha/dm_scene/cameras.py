@@ -1117,6 +1117,7 @@ def get_cameras_interpolated_between_neighbors(
     
     # Build pairs of indices of neighbor cameras and remove duplicates
     camera_pairs = []
+    
     for i in range(len(cameras)):
         for j in range(n_neighbors_to_interpolate):
             # We avoid duplicates by only adding the pair if i < neighbor_idxs[i, j].item()
