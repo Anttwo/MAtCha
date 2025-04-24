@@ -15,7 +15,7 @@
 #include <vector>
 #include "rasterizer.h"
 #include <cuda_runtime_api.h>
-#include <cstdint>
+#include <cstdint> // fixed for cuda 12+
 
 namespace CudaRasterizer
 {
