@@ -49,9 +49,6 @@ def _unbatched_marching_tetrahedra(vertices, tets, sdf, scales):
 
     Refer to :func:`marching_tetrahedra`.
     """
-    
-    # vertices.to('cpu') # gpu poor solution, fixme: do not push to git
-
     device = vertices.device
     
     # call by chunk
@@ -121,7 +118,7 @@ def _unbatched_marching_tetrahedra(vertices, tets, sdf, scales):
         mapping = torch.ones((unique_edges.shape[0]), dtype=torch.long, device=device) * -1
         mapping[mask_edges] = torch.arange(mask_edges.sum(), dtype=torch.long, device=device)
 
-        idx_map = mapping[idx_map] # gpu poor mod
+        idx_map = mapping[idx_map]
 
         interp_v = unique_edges[mask_edges]
     edges_to_interp = vertices[interp_v.reshape(-1)].reshape(-1, 2, 3)
