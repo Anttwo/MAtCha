@@ -6,7 +6,6 @@
 # --------------------------------------------------------
 import tqdm
 import torch
-import sys
 
 from dust3r.utils.device import to_cpu, collate_with_cat
 from dust3r.utils.misc import invalid_to_nans
