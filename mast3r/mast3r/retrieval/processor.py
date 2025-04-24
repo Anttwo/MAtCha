@@ -81,7 +81,6 @@ class Retriever(object):
             featweights=ckpt_args.featweights, nfeat=ckpt_args.nfeat
         ).to(device)
         self.device = device
-        print("model on cuda")
         msg = self.model.load_state_dict(ckpt['model'], strict=False)
         assert all(k.startswith('backbone') for k in msg.missing_keys)
         assert len(msg.unexpected_keys) == 0
