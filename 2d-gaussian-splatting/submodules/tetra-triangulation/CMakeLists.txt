@@ -44,7 +44,7 @@ set(CUDA_GENERATED_OUTPUT_DIR "${BUILD_DIRECTORY}")
 # set environment
 #------------------------------------------------------------------------------
 
-include_directories("${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}")
+include_directories("${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}") # needed for compiling on arch
 
 #find_package(CUDA REQUIRED)
 #include_directories(${CUDA_INCLUDE_DIRS})
