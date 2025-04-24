@@ -128,7 +128,7 @@ def _unbatched_marching_tetrahedra(vertices, tets, sdf, scales):
     verts = (edges_to_interp, edges_to_interp_sdf)
     idx_map = idx_map.reshape(-1, 6)
 
-    tetindex = (occ_fx4[valid_tets] * v_id.to(device).unsqueeze(0)).sum(-1) # gpu poor fix
+    tetindex = (occ_fx4[valid_tets] * v_id.to(device).unsqueeze(0)).sum(-1)
     num_triangles = num_triangles_table.to(device)[tetindex]
     triangle_table_device = triangle_table.to(device)
 
