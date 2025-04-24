@@ -23,7 +23,7 @@
 #define __CUDACC__
 #include <cooperative_groups.h>
 #include <cooperative_groups/reduce.h>
-#include <cfloat>
+#include <cfloat> // fixed for cuda 12+
 
 namespace cg = cooperative_groups;
 
